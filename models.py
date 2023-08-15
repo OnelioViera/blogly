@@ -19,7 +19,8 @@ class User(db.Model):
     def full_name(self):
         """Return name of user."""
 
-        return f"{self.first_name} {self.last_name}"
+        return "{} {}".format(self.first_name, self.last_name)
+
 
 
 def connect_db(app):
