@@ -11,3 +11,5 @@
 ### Create Flask App
 
 ### Make a Base Template
+
+![tests](https://github.com/OnelioViera/blogly/assets/35926663/bb9deea4-8d2c-443e-8068-f7e9fd54d1e8)
