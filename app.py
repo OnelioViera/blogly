@@ -26,9 +26,6 @@ def root():
     return redirect("/users")
 
 
-##############################################################################
-# User route
-
 @app.route('/users')
 def users_index():
     """Show a page with info on all users"""
