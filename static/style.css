@@ -1,4 +1,9 @@
 .navbar-brand {
-  margin-left: 30px;
-  padding: 18px;
+  margin: 15px;
+  margin-left: 40px;
+}
+
+.users-title {
+  margin-top: 20px;
+  margin-bottom: 30px;
 }

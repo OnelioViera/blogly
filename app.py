@@ -99,3 +99,7 @@ def users_destroy(user_id):
     db.session.commit()
 
     return redirect("/users")
+  
+if __name__ == '__main__':
+    app.run(debug=True)
+
