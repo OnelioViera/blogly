@@ -1,10 +1,11 @@
-from flask import Flask, request, redirect, render_template
-from models import db, connect_db, User
+from flask import Flask, request, redirect, render_template, flash
+from flask_debugtoolbar import DebugToolbarExtension
+from models import db, connect_db, User, Post
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///blogly"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECRET_KEY'] = 'ihaveasecret'\
+app.config['SECRET_KEY'] = 'ihaveasecret'
 
 
 connect_db(app)
@@ -15,7 +16,17 @@ db.create_all()
 def root():
     """Homepage redirects to list of users."""
 
-    return redirect("/users")
+    posts = Post.query.order_by(Post.created_at.desc()).limit(5).all()
+    return render_template('posts/homepage.html', posts=posts)
+  
+# @app.route(404)
+# def page_not_found(e):
+#     """404 NOT FOUND page."""
+
+#     return render_template('404.html'), 404
+  
+#####################################################################
+# User routes
 
 
 @app.route('/users')
@@ -88,6 +99,7 @@ def users_destroy(user_id):
     db.session.commit()
 
     return redirect("/users")
+  
   
 if __name__ == '__main__':
     app.run(debug=True)
