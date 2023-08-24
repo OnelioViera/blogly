@@ -18,3 +18,5 @@
 
 ![tests](https://github.com/OnelioViera/blogly/assets/35926663/529fd2f0-4237-4eb5-b032-d2cd22d2445e)
 
+## SQLAlchemy Part 2
+
