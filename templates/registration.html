@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+    <div class="container text-center">
+        <div class="login-img">
+            <img src="/static/img/blogly-5.jpg" alt="Blogly image">
+        </div>
+        <h1 class="h5 mt-3">Create your account</h1>
+    </div>
+    <!-- Login Form -->
+    <div class="row fluid d-flex justify-content-center align-items-center mt-4">
+        <div class="col-md-3">
+            <p>Email address<br>{{ email }}<a href="/login" class="pl-4"
+                    style="text-decoration: underline; color: black; margin-left: 10px;"><strong>Change</strong></a>
+            </p>
+            <form action="/registration" method="post">
+                <div class="form-group">
+                    <label class="h6" for="exampleFormControlInput1">First name</label>
+                    <input type="text" name="firstName" class="form-control mb-2"
+                        style="border-color: hwb(0 49% 51%);" id="exampleFormControlInput1">
+                    <label class="h6" for="exampleFormControlInput1">Last name</label>
+                    <input type="text" name="lastName" class="form-control mb-2"
+                        style="border-color: hwb(0 49% 51%);" id="exampleFormControlInput1">
+                    <label class="h6" for="exampleFormControlInput1">Create a password</label>
+                    <div class="password-input-container">
+                        <input type="password" name="newPassword" class="form-control"
+                            style="border-color: hwb(0 49% 51%);" id="exampleFormControlInput1">
+
+                        <div class="form-check mt-4">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                                Keep me signed in
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2">
+                            <label class="form-check-label" for="defaultCheck2">
+                                Send me emails about new arrivals, hot items, daily savings, & more.
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-md active mt-4" style="width: 100%;" role="button"
+                    aria-pressed="true">Create Account</button>
+            </form>
+
+        </div>
+    </div>
+
+    </div>
+    <div class="text-center">
+        <p class="mt-1 mb-5">Securing your personal information is our priority.</p>
+    </div>
+</body>
+{% endblock %}

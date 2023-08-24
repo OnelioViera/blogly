@@ -3,6 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+def connect_db(app):
+  db.app = app
+  db.init_app(app)
+
 DEFAULT_IMAGE_URL = "https://www.freeiconspng.com/uploads/icon-user-blue-symbol-people-person-generic--public-domain--21.png"
 
 
@@ -40,12 +44,12 @@ class Post(db.Model):
 
 @property
 def friendly_date(self):
-  """Return nicely-formatted date."""
+  """Return formatted date"""
   
   return self.created_at.strftime("%a %b %-d  %Y, %-I:%M %p")
 
   
 def connect_db(app):
-    """Connect to database."""
+    """Connect to database"""
     db.app = app
     db.init_app(app)

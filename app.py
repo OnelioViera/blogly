@@ -1,9 +1,9 @@
-from flask import Flask, request, redirect, render_template, flash
+from flask import Flask, request, redirect, render_template, flash, session, redirect
 from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, User, Post
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///blogly"
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql:///blogly_db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'ihaveasecret'
 
@@ -17,7 +17,49 @@ def root():
     """Homepage redirects to list of users."""
 
     posts = Post.query.order_by(Post.created_at.desc()).limit(5).all()
-    return render_template('posts/homepage.html', posts=posts)
+    return render_template('main-homepage.html', posts=posts)
+  
+# @app.route("/signIn")
+# def signed_in():
+#     return render_template("signIn.html")
+  
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # Retrieve the email from the login form
+        email = request.form["email"]
+
+        # Store the email in the session
+        session["email"] = email
+
+        return redirect("/registration")
+
+    return render_template("login.html")
+  
+@app.route("/registration", methods=["GET", "POST"])
+def registration():
+    if request.method == "POST":
+        # Retrieve form data
+        first_name = request.form["firstName"]
+        last_name = request.form["lastName"]
+        password = request.form["newPassword"]
+
+        # Render a success page or redirect to a different page
+        return render_template("posts/homepage.html")
+
+    # Retrieve the email from the session
+    email = session.get("email")
+
+    # Render the registration form
+    return render_template("registration.html", email=email)
+  
+@app.route("/logout")
+def logout():
+    # Clear the session
+    session.clear()
+
+    # Redirect to the login page
+    return redirect("/homepage.html")
   
 # @app.route(404)
 # def page_not_found(e):
