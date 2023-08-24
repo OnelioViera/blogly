@@ -6,7 +6,7 @@
 
 ### Create a User Model
 
-![user-model](https://github.com/OnelioViera/blogly/assets/35926663/a461f247-f06d-4978-9147-8b74d65d027e)
+![user-model](https://github.com/OnelioViera/blogly/assets/35926663/473e9a3d-0030-45d9-a828-73996973e983)
 
 ### Create Flask App
 
@@ -16,4 +16,5 @@
 
 ### Add Testing
 
-![tests](https://github.com/OnelioViera/blogly/assets/35926663/bb9deea4-8d2c-443e-8068-f7e9fd54d1e8)
+![tests](https://github.com/OnelioViera/blogly/assets/35926663/529fd2f0-4237-4eb5-b032-d2cd22d2445e)
+
