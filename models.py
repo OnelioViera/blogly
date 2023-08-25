@@ -41,6 +41,15 @@ class Post(db.Model):
   created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   
+def get_directory():
+    all_users = user.query.all()
+      
+    for user in all_users:
+        if user is not None:
+          print(first_name, last_name, image_url)
+        else:
+          print(user.name)
+  
 
 @property
 def friendly_date(self):

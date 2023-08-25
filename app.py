@@ -70,7 +70,6 @@ def logout():
 #####################################################################
 # User routes
 
-
 @app.route('/users')
 def users_index():
     """Show a page with info on all users"""
@@ -141,6 +140,27 @@ def users_destroy(user_id):
     db.session.commit()
 
     return redirect("/users")
+  
+#####################################################################
+# Post routes
+
+@app.route('/users/<int:user_id>/posts/new')
+def posts_new_form(user_id):
+    """Show a form to create a new post for a specific user"""
+
+    user = User.query.get_or_404(user_id)
+    return render_template('posts/new.html', user=user)
+  
+  
+#####################################################################
+# Datbase UI route
+
+@app.route('/db')
+def db_debug():
+    """Show a page with info on all users"""
+
+    users = User.query.order_by(User.last_name, User.first_name).all()
+    return render_template('db.html', users=users)
   
   
 if __name__ == '__main__':
